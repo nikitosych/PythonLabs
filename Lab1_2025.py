@@ -120,6 +120,19 @@
 # posortuj obiekty w liście, usuń ostatni element z listy
 # utwórz nową listę z 3 imionami i dołącz do listy
 
+imiona = ["Adam", "Jan", "Adam", "Tim", "Kacper", "Jan", "Michał", "Grzegorz", "Michał", "Maciej"]
+print(imiona[int((input("Podaj indeks\n")))])
+print(imiona.count(input("\nPodaj imie do szukania\n")))
+imiona.append(input("\ndołącz nowe imie do listy do końca listy\n"))
+imiona.insert(3, input("\ndołącz nowe imię jako 3 pozycję na liście\n"))
+imiona.sort()
+imiona.pop()
+print(imiona)
+
+imiona3 = ["Alex", "John", "Matthew"]
+
+imiona + imiona3
+
 
 # # ################# Klasa: Krotka (Tuple)
 # print('To moja pierwsza krotka')
