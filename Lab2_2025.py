@@ -22,39 +22,39 @@
 ## b) Jakie elementy/geny są wspólne dla 2 pacjentów?
 ## c) Jakie elementy/geny występują wyłącznie w przypadku 1 choroby?
 
-set_gene1 = set(['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR4', 'ABCC3','GALNT14', 'ERCC1',
-                'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
-                'SAC19A22', 'AAAP7B', 'ERB3', 'FGR4', 'ACC3', 'GASNT14', 'ERSS4'])
-set_gene2 = set(['SLC19A3', 'ATP7B', 'ERBB3', 'FGFR4', 'ABCC3','GALNT14', 'ERCC1',
-                'LJS19A2', 'AKM7B', 'ELLB32', 'FULR421', 'ANGC3', 'WELNT14', 'EOO11',
-                'SAC19A2', 'AAAP7B', 'ERB3', 'FGR4', 'ACC3', 'GASNT14', 'ERSS4'])
-set_gene3 = set(['SLC19A3', 'ATP7B1', 'ERBB32', 'FGFR4', 'ABCC3','GALNT14', 'ERCC11',
-                'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT15', 'EOO1',
-                'SAC19A22', 'AAP7B', 'ERBB3', 'FGR4', 'ACC4', 'GASNT14', 'ERSS4'])
-common_genes = set_gene1 & set_gene2 & set_gene3
-print(common_genes)
-common_two = (set_gene1 & set_gene2) | (set_gene1 & set_gene3) | (set_gene2 & set_gene3) - common_genes
-print(common_two)
-unique_genes = {
-    "Pacjent 1": set_gene1 - set_gene2 - set_gene3,
-    "Pacjent 2": set_gene2 - set_gene1 - set_gene3,
-    "Pacjent 3": set_gene3 - set_gene1 - set_gene2
-}
-print(unique_genes)
+# set_gene1 = set(['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR4', 'ABCC3','GALNT14', 'ERCC1',
+#                 'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
+#                 'SAC19A22', 'AAAP7B', 'ERB3', 'FGR4', 'ACC3', 'GASNT14', 'ERSS4'])
+# set_gene2 = set(['SLC19A3', 'ATP7B', 'ERBB3', 'FGFR4', 'ABCC3','GALNT14', 'ERCC1',
+#                 'LJS19A2', 'AKM7B', 'ELLB32', 'FULR421', 'ANGC3', 'WELNT14', 'EOO11',
+#                 'SAC19A2', 'AAAP7B', 'ERB3', 'FGR4', 'ACC3', 'GASNT14', 'ERSS4'])
+# set_gene3 = set(['SLC19A3', 'ATP7B1', 'ERBB32', 'FGFR4', 'ABCC3','GALNT14', 'ERCC11',
+#                 'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT15', 'EOO1',
+#                 'SAC19A22', 'AAP7B', 'ERBB3', 'FGR4', 'ACC4', 'GASNT14', 'ERSS4'])
+# common_genes = set_gene1 & set_gene2 & set_gene3
+# print(common_genes)
+# common_two = (set_gene1 & set_gene2) | (set_gene1 & set_gene3) | (set_gene2 & set_gene3) - common_genes
+# print(common_two)
+# unique_genes = {
+#     "Pacjent 1": set_gene1 - set_gene2 - set_gene3,
+#     "Pacjent 2": set_gene2 - set_gene1 - set_gene3,
+#     "Pacjent 3": set_gene3 - set_gene1 - set_gene2
+# }
+# print(unique_genes)
 
 
 ######### Operatory porównania lokalnego i globalne
 ####################Przykład
 ### Sprawdź wynik działania następujących operacji:
-l1 = [5,10]
-l2 = [5,11]
+# l1 = [5,10]
+# l2 = [5,11]
 #
-print(l1,l2)
-print('l1 == l2 wynik:',l1 == l2)
-print('l1 is l2 wynik:',l1 is l2)
-print('l1 != l2 wynik: ',l1 != l2)
-print('l1 is not l2 wynik:',l1 is not l2)
-print('l1 >= l2 wynik:', l1 >= l2)
+# print(l1,l2)
+# print('l1 == l2 wynik:',l1 == l2)
+# print('l1 is l2 wynik:',l1 is l2)
+# print('l1 != l2 wynik: ',l1 != l2)
+# print('l1 is not l2 wynik:',l1 is not l2)
+# print('l1 >= l2 wynik:', l1 >= l2)
 
 ## x or y	jeżeli x == False, to y, w przeciwnym razie x
 ## w przybliżeniu alternatywa
@@ -86,9 +86,16 @@ print('l1 >= l2 wynik:', l1 >= l2)
 # ### Sprawdź czy w poniższym zbiorze występuje gen 'FGFR4' oraz 'FGERA4', jeśli tak to wskaż index
 # ### genu na liście
 #
-# lista_gene1 = ['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR14', 'ABCC3','GALNT14', 'ERCC1',
-#                 'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
-#                 'SAC19A22', 'FGFR4', 'ERB3', 'FGR4', 'FGFR4', 'GASNT14', 'ERSS4']
+lista_gene1 = ['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR14', 'ABCC3','GALNT14', 'ERCC1',
+                'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
+                'SAC19A22', 'FGFR4', 'ERB3', 'FGR4', 'FGFR4', 'GASNT14', 'ERSS4']
+
+genes = ["FGFR4", "FGERA4"]
+
+for gene in genes:
+    if gene in lista_gene1:
+        print(lista_gene1.index(gene))
+
 
 ####################Łańcuchy znaków
 ## Zapoznaj się z wybranymi metodami dla typu string
@@ -132,6 +139,14 @@ print('l1 >= l2 wynik:', l1 >= l2)
 ## c) wstaw poszczególne wyrazy jako elementy listy
 ## d) ile zdań jest w analizowanym tekście?
 
+tekst = "Któregoś dnia w zeszłym tygodniu dokładnie o 9:29 pochyliłam się nerwowo nad klawiaturą komputera gotowa do walki ze sztucznym tworem o nazwie Emma."
+print(tekst.count("Emma"))
+tekst = tekst.upper()
+print(tekst)
+word_list = tekst.split()
+print(word_list)
+print(len(tekst.split(" ")))
+
 ######################################
 #################Instrukcje sterujące tj. instrukcje warunkowe i pętle
  ################# 1. Instrukcja warunkowa "IF"#########struktura
@@ -159,6 +174,12 @@ print('l1 >= l2 wynik:', l1 >= l2)
 
 ########Zadanie 4
 ## Sprawdź czy dowolnie podana przez użytkownika liczba jest parzysta czy nieparzysta
+liczba = int(input("Podaj liczbe "))
+
+if liczba % 2 == 0:
+    print(f"Liczba {liczba} jest parzysta.")
+else:
+    print(f"Liczba {liczba} jest nieparzysta.")
 
 #################Instrukcje sterujące tj. instrukcje warunkowe i pętle  Teoria
 ################# 1. Instrukcja warunkowa "MATCH"#########struktura
@@ -187,6 +208,28 @@ print('l1 >= l2 wynik:', l1 >= l2)
 ## np 50%-60% to 3.0, 61%-70% to 3.5, ...., 91%-100% to 5.0 - if
 ## np 50% to 3.0, 61% to 3.5, ...., 91% to 5.0 - match
 ## Korzystając z instrukcji match, napisz program który będzie wyznaczał ocenę studenta na podstawie uzyskanych punktów (max 15pkt)
+# Pobranie liczby punktów od użytkownika
+punkty = int(input("Podaj liczbe punktow (max 15): "))
+
+# Obliczenie procentowego wyniku
+procent = (punkty / 15) * 100
+
+# Przypisanie oceny na podstawie przedziałów procentowych
+match procent:
+    case p if 50 <= p <= 60:
+        print("Ocena: 3.0")
+    case p if 61 <= p <= 70:
+        print("Ocena: 3.5")
+    case p if 71 <= p <= 80:
+        print("Ocena: 4.0")
+    case p if 81 <= p <= 90:
+        print("Ocena: 4.5")
+    case p if 91 <= p <= 100:
+        print("Ocena: 5.0")
+    case p if p < 50:
+        print("Niezaliczone")
+    case _:
+        print("Wprowadz poprawna liczbe punktow (0-15)")
 ########### Pętla for  - jako wektor
 
 # for i in wektor:  # wektor tworzymy korzystając z funkcji range(początek,koniec)
