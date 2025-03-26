@@ -86,15 +86,15 @@
 # ### Sprawdź czy w poniższym zbiorze występuje gen 'FGFR4' oraz 'FGERA4', jeśli tak to wskaż index
 # ### genu na liście
 #
-lista_gene1 = ['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR14', 'ABCC3','GALNT14', 'ERCC1',
-                'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
-                'SAC19A22', 'FGFR4', 'ERB3', 'FGR4', 'FGFR4', 'GASNT14', 'ERSS4']
+# lista_gene1 = ['SLC19A2', 'ATP7B', 'ERBB3', 'FGFR14', 'ABCC3','GALNT14', 'ERCC1',
+#                 'LJS19A2', 'AKM7B', 'ELLB34', 'FULR4', 'ANGC3', 'WELNT14', 'EOO1',
+#                 'SAC19A22', 'FGFR4', 'ERB3', 'FGR4', 'FGFR4', 'GASNT14', 'ERSS4']
 
-genes = ["FGFR4", "FGERA4"]
+# genes = ["FGFR4", "FGERA4"]
 
-for gene in genes:
-    if gene in lista_gene1:
-        print(lista_gene1.index(gene))
+# for gene in genes:
+#     if gene in lista_gene1:
+#         print(lista_gene1.index(gene))
 
 
 ####################Łańcuchy znaków
@@ -139,13 +139,13 @@ for gene in genes:
 ## c) wstaw poszczególne wyrazy jako elementy listy
 ## d) ile zdań jest w analizowanym tekście?
 
-tekst = "Któregoś dnia w zeszłym tygodniu dokładnie o 9:29 pochyliłam się nerwowo nad klawiaturą komputera gotowa do walki ze sztucznym tworem o nazwie Emma."
-print(tekst.count("Emma"))
-tekst = tekst.upper()
-print(tekst)
-word_list = tekst.split()
-print(word_list)
-print(len(tekst.split(" ")))
+# tekst = "Któregoś dnia w zeszłym tygodniu dokładnie o 9:29 pochyliłam się nerwowo nad klawiaturą komputera gotowa do walki ze sztucznym tworem o nazwie Emma."
+# print(tekst.count("Emma"))
+# tekst = tekst.upper()
+# print(tekst)
+# word_list = tekst.split()
+# print(word_list)
+# print(len(tekst.split(" ")))
 
 ######################################
 #################Instrukcje sterujące tj. instrukcje warunkowe i pętle
@@ -174,12 +174,12 @@ print(len(tekst.split(" ")))
 
 ########Zadanie 4
 ## Sprawdź czy dowolnie podana przez użytkownika liczba jest parzysta czy nieparzysta
-liczba = int(input("Podaj liczbe "))
+# liczba = int(input("Podaj liczbe "))
 
-if liczba % 2 == 0:
-    print(f"Liczba {liczba} jest parzysta.")
-else:
-    print(f"Liczba {liczba} jest nieparzysta.")
+# if liczba % 2 == 0:
+#     print(f"Liczba {liczba} jest parzysta.")
+# else:
+#     print(f"Liczba {liczba} jest nieparzysta.")
 
 #################Instrukcje sterujące tj. instrukcje warunkowe i pętle  Teoria
 ################# 1. Instrukcja warunkowa "MATCH"#########struktura
@@ -209,27 +209,27 @@ else:
 ## np 50% to 3.0, 61% to 3.5, ...., 91% to 5.0 - match
 ## Korzystając z instrukcji match, napisz program który będzie wyznaczał ocenę studenta na podstawie uzyskanych punktów (max 15pkt)
 # Pobranie liczby punktów od użytkownika
-punkty = int(input("Podaj liczbe punktow (max 15): "))
+# punkty = int(input("Podaj liczbe punktow (max 15): "))
 
-# Obliczenie procentowego wyniku
-procent = (punkty / 15) * 100
+# # Obliczenie procentowego wyniku
+# procent = (punkty / 15) * 100
 
-# Przypisanie oceny na podstawie przedziałów procentowych
-match procent:
-    case p if 50 <= p <= 60:
-        print("Ocena: 3.0")
-    case p if 61 <= p <= 70:
-        print("Ocena: 3.5")
-    case p if 71 <= p <= 80:
-        print("Ocena: 4.0")
-    case p if 81 <= p <= 90:
-        print("Ocena: 4.5")
-    case p if 91 <= p <= 100:
-        print("Ocena: 5.0")
-    case p if p < 50:
-        print("Niezaliczone")
-    case _:
-        print("Wprowadz poprawna liczbe punktow (0-15)")
+# # Przypisanie oceny na podstawie przedziałów procentowych
+# match procent:
+#     case p if 50 <= p <= 60:
+#         print("Ocena: 3.0")
+#     case p if 61 <= p <= 70:
+#         print("Ocena: 3.5")
+#     case p if 71 <= p <= 80:
+#         print("Ocena: 4.0")
+#     case p if 81 <= p <= 90:
+#         print("Ocena: 4.5")
+#     case p if 91 <= p <= 100:
+#         print("Ocena: 5.0")
+#     case p if p < 50:
+#         print("Niezaliczone")
+#     case _:
+#         print("Wprowadz poprawna liczbe punktow (0-15)")
 ########### Pętla for  - jako wektor
 
 # for i in wektor:  # wektor tworzymy korzystając z funkcji range(początek,koniec)
@@ -268,6 +268,8 @@ match procent:
 ###### Zadanie 7
 ###### Calculate the root of the numbers from 1 to 10 using the while loop
 ###### Oblicz pierwiastek liczb od 1 do 10 korzystając z pętli while
+# from math import sqrt
+# print([sqrt(i) for i in range(1, 10)])
 
 ### Jeśli masz problem z tłumaczeniem treści użyj https://www.deepl.com lub poproś o dodatkowe wyjaśnienie
 
@@ -275,10 +277,27 @@ match procent:
 ###### Write a program which takes 3 digits: a, b, c as input and
 ###### calculate the roots of a quadratic equation ax^2 + bx + c = 0
 
+# from math import sqrt
+# a, b, c = int(input("Podaj a")), int(input("Podaj b")), int(input("Podaj c"))
+# d = b**2 - 4*a*c
+# if d == 0: print(-b/2*a)
+# elif d > 0: print((-b-sqrt(d))/2*a, (-b+sqrt(d))/2*a)
+# else: print("equation has no roots")
+
+
 ###### Task 9
 ##### Write a program, which will find all such numbers between 1 and 1000 (both included) such
 ##### that each digit of the number is an even number the numbers obtained should be printed 
 ### in a comma-separated sequence on a single line.
+
+# even = ""
+# for i in range(1, 1000):
+#     n = 0
+#     for j in str(i).split():
+#         n += int(j)
+#     if n % 2 == 0:
+#         even += f"{i}, "
+# print(even)
 
 ################ Methods versus function (metoda vs funkcja)
 #### Example
@@ -333,11 +352,19 @@ match procent:
 ## a następnie obliczał i wyświetlał na ekranie iloczyn wprowadzonych przez użytkownika liczb,
 ## program kończy działanie jeżeli uzytkownik wprowadzi cyfrę 0. Użytkownik może wykonać obliczenia tylko na
 ## liczbach całkowitych (wstaw odpowiedni warunek).
+# while True:
+#     x, y = int(input("Pass x: ")), int(input("Pass y: "))
+#     if x == 0 and y == 0: break
+#     print(f"Result{x*y}")
 
 ## # ################################ Task 11
 ## Napisz program, który wyświetli twoje imię i nazwisko jeżeli użytkownik poda
 ## właściwe hasło, jedno z 2 do wyboru, (hasła są przechowywane w krotce)
 
+# passwds = ("123", "321a")
+# imie, nazwisko = "Jan", "Kowalski"
+
+# print(f"Twoje imie: {imie}\nTwoje nazwisko: {nazwisko}" if input("Podaj haslo: ") in passwds else "Nieprawidlowe haslo")
 ## Write a program that will display your name if the user enters the correct
 ## password (the password is stored in a variable)
 
@@ -355,7 +382,14 @@ match procent:
 
 ## Wygeneruj listę złożoną z 100 liczb całkowitych parzystych i nieparzystych
 ## wypisz wszystkie liczby parzyste z tablicy liczby, od najmniejszej do największej.
-## Do losowania liczb wykorzystaj moduł random patrz przykład poniżej
+## Do losowania liczb wykorzystaj moduł random patrz przykład 
+
+from random import randint
+r = []
+for i in range(1, 100):
+    g = randint()
+    r.append(g) if g % 2 == 0 else continue // TODO tu pomylka
+
 
 #################### One line if/else statement in Python
 ########### Example
