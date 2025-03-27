@@ -384,12 +384,13 @@
 ## wypisz wszystkie liczby parzyste z tablicy liczby, od najmniejszej do największej.
 ## Do losowania liczb wykorzystaj moduł random patrz przykład 
 
-from random import randint
-r = []
-for i in range(1, 100):
-    g = randint()
-    r.append(g) if g % 2 == 0 else continue // TODO tu pomylka
-
+# from random import randint
+# r = []
+# for i in range(1, 100):
+#     g = randint(-100000, 100000)
+#     if g % 2 == 0: r.append(g)
+# r.sort()
+# print(r)
 
 #################### One line if/else statement in Python
 ########### Example
@@ -405,11 +406,11 @@ for i in range(1, 100):
 # x = a > b and print('większe') or print('mniejsze')
 
 # Option 3
-# age = 21
+# age = 19
 # print(('adult', 'kid')[age < 20])  # choice from the tuples
 
 # Option 4
-# age = 21
+# age = 11231
 # print(('adult', 'kid')[True])
 
 ############### Task 13
@@ -438,3 +439,6 @@ for i in range(1, 100):
 ## Write a function that calculates the quotient of 3 even numbers
 ## Utwórz funkcje która obliczy iloraz 3 parzystych liczb, użyj "one line statement"
 
+# def q (a, b, c):
+#     return a*b*c if a % 2 == 0 and b % 2 == 0 and c % 2== 0 else "a, b, c are not even"
+# print(q(*(int(input()) for _ in range(3))))
