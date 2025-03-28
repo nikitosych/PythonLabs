@@ -1,8 +1,8 @@
-from random import randint
-# r = []
-# for i in range(1, 100):
-#     g = randint(-100000, 100000)
-#     if g % 2 == 0:
-#         r.append(g)
-# r.sort()
-# print(r)
+import sil
+
+ntn = lambda n, k: sil.silnia(n) / (sil.silnia(k) * sil.silnia(n - k))
+
+n = int(input("Podaj n: "))
+k = int(input("Podaj k: "))
+
+print(ntn(n, k))
