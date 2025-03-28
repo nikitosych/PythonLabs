@@ -61,10 +61,27 @@
 # Utwórz listę złożoną z pojedynczych liter swojego imienia następnie korzystając
 # z funkcji lambda połącz kolejne litery w jeden wyraz (swoje imie)
 
+# l = ["J.", "K."]
+
+# initials = lambda f, s: f + " " + s
+# print(initials(l[0], l[1]))
+
 # ########################## Task  2
 # Przypisz do zmiennej wartość która będzie twoim imieniem i nazwiskiem następnie korzystając
 # z funkcji lambda rozdziel wyraz na poszczegolne wyrazy, a potem wyrazy na litery
 # użyj funkcji list i metody split - dla zmiennych typu string
+
+# name = "Jan Kowalski"
+
+# splitName = lambda n: [l for w in str(n).split() for l in list(w)]
+
+# # def splitNameAnalog(n):
+# #     result = []
+# #     for w in str(n).split(): 
+# #         for l in list(w):     
+# #             result.append(l)  
+
+# print(splitName(name))
 
 ##############################################################
 ######### Function:  map(), zip(), reduce() i filter()
@@ -134,6 +151,7 @@
 ## le()-less or equal, gt() -> greater than, and ge() -> greater or equal
 ## Object identity: is_(), is_not()
 
+
 # import functools, operator
 # list2 = [1,2,3,4]
 # resultReduce2 = functools.reduce(operator.mul, list2, 1)
@@ -155,7 +173,7 @@
 #     return True
 #  else:
 #     return False
-#
+
 # resultFilter = filter(even, list1)
 # print(list(resultFilter))
 
@@ -165,11 +183,11 @@
 # def main():
 #     print("#### function enumerate ###")
 #     a = ['a', 'b', 'c']
-##    b = [(0, 'a'), (1, 'b')] # sprawdź poniższe również dla zmiennej b
-#
+# #    b = [(0, 'a'), (1, 'b')] # sprawdź poniższe również dla zmiennej b
+
 #     for i in enumerate(a):
 #         print(i)        # [(0, 'a'), (1, 'b')]
-#
+
 #     print("#######")
 #     for i in enumerate(a):
 #         for j in i:
@@ -178,9 +196,9 @@
 #     for i in enumerate(a):
 #         for j in i[1]:
 #             print('j element:', j)
-#
-# if __name__ == '__main__':
-#     main()
+
+
+# main()
 
 
 
@@ -188,6 +206,10 @@
 # # Utwórz funkcję która w dowolnym wyrazie (1 argument funkcji)
 # # znajdzie dowolną literę (2 argument funkcji)
 ## użyj lammbda()
+# getfl = lambda s, c: list(filter(lambda l: l[1] == c, enumerate(str(s))))[0]
+
+# print(getfl("Hello", 'l'))
+
 # ########################## Task 4
 ## Utwórz dwie listy, do każdej z nich niezależnie zapisuj odpowiednio
 ## podawane przez użytkowników login (pierwsza lista) i hasło (druga lista),
@@ -195,36 +217,94 @@
 ## użyj break, continue, enumerate().
 ## Następnie login-y i hasła zapisz do słownika (login to klucz słownika).
 
+# l, p = list(), list()
+
+# while True:
+#     login = input("Podaj login")
+#     if login == "STOP": 
+#         break
+#     passw = input("Podaj haslo")
+#     if passw == "STOP":
+#         break
+#     l.append(login)
+#     p.append(passw)
+
+# users = {login: passw for login, passw in zip(l, p)}
+# print(users)
+
 # ########################## Task 5  - Module in Python
 # # # Zmodyfikuj poprzednie zadanie, tworząc a następnie importując moduł
 # # #Utwórz funkcje Poziom: która rysuje gwiazdki poziomo, liczbę gwiazdek podaje użytkownik jako argument funkcji')
 # # #Utwórz funkcje Pion: która rysuje gwiazdki pionowo, liczbę gwiazdek podaje użytkownik jako argument funkcji')
 # # obie funkcje są z modułu o nazwie stars
 
+# from users import createUsers
+# print(createUsers())
+
+# import stars
+
+
 # # Korzystając z modułu stars i funkcji Pion Poziom wypisz litery: E, L
+
+# stars.drawH(5)
+# stars.drawV(2)
+# stars.drawH(5)
+# stars.drawV(2)
+# stars.drawH(5)
+# print()
+# stars.drawV(4)
+# stars.drawH(5)
+
+
 
 # ########################## Task 6
 # # utwórz moduł o nazwie sil, w którym znajdzie się funkcja silnia (użyj lammbda), a następnie korzystając z
 # modułu sil, oblicz symbol Newtona dla dowolnych 2 liczb wskazanych przez
 # użytkownika(http://www.fizykon.org/wzory/wzory_matem_kombinatoryka.htm)
 
+# import sil
+# from math import floor
+
+# ntn = floor(lambda n, k: sil.silnia(n) / (sil.silnia(k) * sil.silnia(n - k)))
+
+# n = int(input("Podaj n: "))
+# k = int(input("Podaj k: "))
+
+# print(ntn(n, k))
+
+
 # ########################## Task 7
 # # Write a script to filter out only the even items from a list (i.e. made from range(1, 100))
 # # using filter() and lambda functions.
 # #  The numbers obtained should be printed in a comma-separated sequence on a single line.
 
+# e = filter(lambda n: n % 2 == 0, range(1, 100))
+
+# print(list(e))
+
 # ########################## Task 8
 #### Write a script, using reduce(), which will multiply elements in range (1, 100)
+
+# from functools import reduce
+# m = reduce(lambda a, b: a*b, range(1, 100))
+
+# print(m)
 
 # ########################## Task 9
 ### Write a program which will find all such numbers which are
 ### divisible by 7 but are not a multiple of 5 between 2000 and 3200 (both included)
 ### use filter
 
+# n = filter(lambda n: n % 7 == 0 and n % 5 != 0, range(2000, 3200))
+
+# print(list(n))
+
 # ########################## Task 10
 ### Write a program which will find all such numbers which are
 ### divisible by 7 but are not a multiple of 5 between 2000 and 3200 (both included)
 ### use lambda, filter
+
+# # see above
 
 # ########################## Task 11
 #  # # Utwórz funkcje Poziom: która rysuje gwiazdki poziomo, liczbę gwiazdek podaje użytkownik
@@ -233,3 +313,13 @@
 # ### liczbę gwiazdek podaje użytkownik jako argument funkcji')
 # # # Korzystając z w/w funkcji narysuj litery: E, L
 ### Użyj lambda, użyj wbudowanych funkcji, skróć maksymalnie kod programu, użytkownik, jako wejściowy argument podaje litere E lub L  
+
+# Poziom = lambda n: print('*' * n)
+# Pion = lambda n: print('\n'.join('*' for _ in range(n)))
+
+# Litera = lambda lit: (
+#     (Poziom(5), Pion(3), Poziom(5), Pion(3), Poziom(5)) if lit == 'E' else
+#     (Pion(5), Poziom(4)) if lit == 'L' else print("Blad")
+# )
+
+# Litera(input("E/L : "))
