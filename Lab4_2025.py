@@ -10,7 +10,7 @@
 ###     posiada mniejszą liczbą parametrów niż funkcja fun, część jej argumentów jest
 ###     odgórnie ustalona "zamrożona"
 
-import functools
+# import functools
 # help(functools) # podgląd dostępnych funkcji lub klas w pakiecie
 
 ## Przykład działanie funkcji wyższego rzędu partial(function,arg1,arg2,...argN)
@@ -24,7 +24,7 @@ import functools
 # print(partialmultiply3(z = 100))
 
 ### II. Moduł operator - zawiera standardowe operatory jako funkcje np.
-import operator
+# import operator
 # help(operator) # podgląd dostępnych funkcji w pakiecie
 
 ## Przykładowe operatory:
@@ -58,6 +58,13 @@ import operator
 ### Utwórz 2 listy, pierwsza liczby od 1 do 100, druga 100 losowych liczb
 ### odejmnij wartości elementów listy pierwszej od drugiej
 ### Wykorzystaj map() i funkcję sub() z modułu operators
+# from random import randint
+
+# r = [i for i in range(1, 100)]
+# l = [randint(-100000, 100000) for _ in range (1, 100)]
+
+# m = map(operator.sub, r, l)
+# print(list(m))
 
 ### Example 2 - wykorzystanie funkcji wyższego rzędu i operatorów
 
@@ -89,9 +96,13 @@ import operator
 ### wyselekcjonuj liczby mniejsze niż 3 i parzyste
 ### Wykorzystaj filter() i funkcje z modułu operators
 
+# m = list(filter(lambda n: operator.and_(operator.lt(n, 3), operator.eq(operator.mod(n, 2), 0)), [randint(-100000, 100000) for _ in range(10000)]))
+
+# print(m)
+
 #######################################################################
 ### III. Moduł itertools - zawiera iteratory do wydajnego zapętlania
-import itertools
+# import itertools
 ##  Iteratory nieskończone (funkcje z nieskończonymi iteratorami)
 ## count(start,krok) - odlicza kolejne liczby, nieskonczony interator
 ## cycle() - funkcja powtarzająca w cyklu wartości
@@ -99,10 +110,10 @@ import itertools
 ## nieskończoną liczbę razy, często używana łącznie z break w petli for
 
 ### Przykłady działania iteratorów nieskończonych
-from itertools import count, cycle, repeat
+# from itertools import count, cycle, repeat
 
 ## Example 3a count(start,krok)
-#for i in itertools.count(0,1): print(i)  # nieskończony iterator od 0 z krokiem 1
+#for i in itertools.count(0,1): print(i) # nieskończony iterator od 0 z krokiem 1
 
 # generujemy liczby od 2 do 4 z krokiem 1
 # for i in itertools.count(2,1):
@@ -114,6 +125,9 @@ from itertools import count, cycle, repeat
 ##### Task 3
 ### Utwórz pętlę generującą 50 liczb całkowitych z krokiem 5, większych niż 99
 ### Wykorzystaj count()
+
+# for i in itertools.count(0, 5): 
+#     if i > 99: print(i)
 
 ## Example 3b cycle() -  kolejne elementy wypisywane cyklicznie
 # i = 0
@@ -129,6 +143,14 @@ from itertools import count, cycle, repeat
 ### n krotnie (argument funkcji) wypisze w cyklu każdy z jej elementów
 ### Wykorzystaj cycle()
 
+# def funcycle(n: int):
+#     i = 0
+#     for s in itertools.cycle('INFORMATYKA'):
+#         if i > n: break
+#         print(s)
+#         i += 1
+
+# funcycle(len('INFORMATYKA')-1)
 
 ## Example 3c repeat(object,n-times)  , repeat(object) - powtarzaj w nieskonczoność
 # print(list(itertools.repeat('a',5)))  # powtarzaj 5-krotnie
@@ -152,14 +174,16 @@ from itertools import combinations, combinations_with_replacement
 
 
 ## wariant funkcyjnie
-#print(list(product([1,2],['a', 'b', 'c'])))
+# print(list(product([1,2],['a', 'b', 'c'])))
 # print(list(product([1,2],['a', 'b', 'c'],repeat = 2)))
 
 ##### Task 5
 ### Oblicz iloczyn kartezjański 3D, [1,2,3], ['a','b','c'], [True,False]
 
+# print(list(product([1,2,3], ['a','b','c'], [True,False])))
+
 #### Example 4b permutations() - możliwe kombinacje elementów
-# list1 = [1,2,3]
+# list1 = [1,2,3,4,5]
 # print(list(permutations(list1)))
 
 # word = 'ALA'
@@ -173,8 +197,17 @@ from itertools import combinations, combinations_with_replacement
 ### Posiadasz grupę N-studentów (N-indeksów), podziel w/w grupę na n-podgrup
 ### Specyfikacja kodu: funkcja, wykorzystanie iteratora kombinatorycznego
 
-from itertools import accumulate,chain
-from itertools import compress, dropwhile, filterfalse
+# sepGroup = lambda students, groups: list(combinations([i for i in range(students)], groups))
+
+# def sepGroup(s, g):
+#     if g > s or g <= 0: return "g ne moze byc wieksze od s i mniejsze od 1."
+#     indexes = [i for i in range(1, s)]
+#     return list(combinations(indexes, s//g))
+
+# print(sepGroup(20, 6))
+
+# from itertools import accumulate,chain
+# from itertools import compress, dropwhile, filterfalse
 
 ###### Iteratory skończone
 ## enumerate() - generowanie krotek na podstawie listy
@@ -186,7 +219,7 @@ from itertools import compress, dropwhile, filterfalse
 ## dropwhile(func,seq) i takewhile() do filtrowania obiektu iterowalnego na podstawie pojedynczej wartości True/False
 
 ## ## Example 5a accumulate - podobna do reduce
-import operator
+# import operator
 # print(list(accumulate([1,2,3,4]))) # domyślnie suma
 #print(list(accumulate([1,2,3,4], operator.mul))) # kumulacja mnożenie elementów
 
@@ -194,6 +227,8 @@ import operator
 ## początkowa kwota na 3mc lokacie to k = 10000, oprocentowanie lokaty to 0.01%
 ## oblicz jaką kwotę zgromadzi użytkownik po upływie t = 9mc
 ### Specyfikacja kodu: funkcja, wykorzystanie iteratora skończonego
+
+
 
 ## ## Example 5b chain()
 #print(list(chain([0,0],[1,2,3,4],['a','b'])))
