@@ -170,5 +170,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# VS Code Code Runner temporary file
-tempCodeRunnerFile.py
+# Every temporary file
+temp*
