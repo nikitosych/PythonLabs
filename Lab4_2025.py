@@ -206,8 +206,8 @@ from itertools import combinations, combinations_with_replacement
 
 # print(sepGroup(20, 6))
 
-# from itertools import accumulate,chain
-# from itertools import compress, dropwhile, filterfalse
+from itertools import accumulate,chain
+from itertools import compress, dropwhile, filterfalse
 
 ###### Iteratory skończone
 ## enumerate() - generowanie krotek na podstawie listy
@@ -228,7 +228,11 @@ from itertools import combinations, combinations_with_replacement
 ## oblicz jaką kwotę zgromadzi użytkownik po upływie t = 9mc
 ### Specyfikacja kodu: funkcja, wykorzystanie iteratora skończonego
 
+# def obliczLokate(lokata: float, okresMc: int):
+#     # po co mi w tym zadaniu iteratory?
+#     return lokata * okresMc + (lokata * okresMc) * 0.01
 
+# print(f"Zgromadzona kwota za 9mc to {obliczLokate(10000/3, 9)}")
 
 ## ## Example 5b chain()
 #print(list(chain([0,0],[1,2,3,4],['a','b'])))
@@ -254,6 +258,10 @@ from itertools import combinations, combinations_with_replacement
 ## Utwórz listę 100 losowych liczby
 ## utwórz podzbiór liczb parzystych większych od 10
 ### Specyfikacja kodu: funkcja, wykorzystanie iteratora skończonego
+
+# from random import randint
+# l = [randint(-100000, 100000) for _ in range(100)]
+# print(list(enumerate(compress(l, list(map(lambda x: 0 if x % 2 != 0 else 1, l))))))
 
 ## ## Example 5f filterfalse(funkcja,iterator)
 # from itertools import filterfalse
@@ -299,6 +307,11 @@ from itertools import combinations, combinations_with_replacement
 ### n - liczbę elementów w generatorze deklaruje użytkownik
 ### np. dla n=3,  funkcja next w kolejnych wywołaniach zwraca:  4, 16, 32
 
+# def multoffour(n):
+#     for i in range(1, n):
+#         if i % 4 == 0:
+#             yield i
+
 ### Example
 ### Zwróć uwagę że możesz w kolejnych iteracjach realizować przerywać operacje,
 ### następnie je wznawiać
@@ -326,6 +339,12 @@ from itertools import combinations, combinations_with_replacement
 
 ### Task 9
 ## a) Utwórz własny generator zwracający 1000 losowych liczb parzystych z zakresu 0-100000000
+
+# from random import randint
+# def tohundredmils():
+#     for _ in range(1000):
+#         yield randint(0, 100000000)
+
 
 ### II wyrażenie generujące
 
@@ -368,6 +387,12 @@ from itertools import combinations, combinations_with_replacement
 ## a każdy kolejny element ciągu jest sumą dwóch poprzednich. Wypisz n-ty element tego ciągu
 ## Użytkownik deklaruje ilość elementów (n).
 ## Specyfikacja: użyj accumulate() lub reduce() do wygenerowania ciągu Fibonacciego
+# def fib(n):
+#     for i in list(accumulate(range(n), lambda x, y: x + y)):
+#         print(i)
+
+# fib(10) # TODO dorob
+
 
 # from functools import reduce
 # from itertools import accumulate
