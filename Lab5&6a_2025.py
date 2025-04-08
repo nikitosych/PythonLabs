@@ -184,18 +184,18 @@ Dodatkowe linki do filmów, które ułatwią Ci zrozumienie materiału z laborat
 ############  Example 6:
 ### Zapoznaj się z przykładem sumowania liczb w różnej kombinacji i ilości argumentów wejściowychdef 
 
-funckcja1(x = 0,y = 0,*args,**kwargs):
-    if len(args) == 0 and len(kwargs.keys()) == 0: suma = x + y
-    if len(args) > 0 and len(kwargs.keys())==0: suma = x + y + sum(args)
-    if len(args) == 0 and len(kwargs.keys())>0: suma = x + y + sum(kwargs.values())
-    if len(args) > 0 and len(kwargs.keys()) > 0: suma = x + y + sum(args) + sum(kwargs.values())
-    return suma
+# def funckcja1(x = 0,y = 0,*args,**kwargs):
+#     if len(args) == 0 and len(kwargs.keys()) == 0: suma = x + y
+#     if len(args) > 0 and len(kwargs.keys())==0: suma = x + y + sum(args)
+#     if len(args) == 0 and len(kwargs.keys())>0: suma = x + y + sum(kwargs.values())
+#     if len(args) > 0 and len(kwargs.keys()) > 0: suma = x + y + sum(args) + sum(kwargs.values())
+#     return suma
 
-print(funckcja1())
-print(funckcja1(x=1,y=1))
-print(funckcja1(x=1,y=1,a=1,b=1))
-print(funckcja1(1,1,3,3))
-print(funckcja1(1,1,3,3, a = 2, b = 2))
+# print(funckcja1())
+# print(funckcja1(x=1,y=1))
+# print(funckcja1(x=1,y=1,a=1,b=1))
+# print(funckcja1(1,1,3,3))
+# print(funckcja1(1,1,3,3, a = 2, b = 2))
 
 ########################################## Zapamiętaj:
 #### 1. “args” i “kwargs” możesz zastąpić dowolnymi innymi nazwami zmiennych
@@ -237,6 +237,20 @@ print(funckcja1(1,1,3,3, a = 2, b = 2))
 # # print(my_list)
 #
 # ''
+
+# def checknum(*xy) -> None:
+#     """
+#     Funkcja sprawdza czy liczby z przedzialu od xy[0] do xy[1] sa podzielne przez 7 i nie sa iloczynem z 5 i wypisuje te liczby na ekran
+
+#     Args:
+#         xy[0] (int): Pierwsza liczba z przedzialu
+#         xy[1] (int): Druga liczba z przedzialu
+#     """
+#     for i in range(xy[0], xy[1]):
+#         if i % 7 == 0 and i % 5 != 0:
+#             print(f"{i}, ")
+
+# checknum(1, 999)
 # # ################################ Task 1
 ## A website requires the users to input username and password to register. 
 ## Create function to check the validity of password input by users.
@@ -249,6 +263,35 @@ print(funckcja1(1,1,3,3, a = 2, b = 2))
 ## 5. Maximum length of transaction password: 8
 ## You should to document your code by using python docstrings (google)
 ## Save result to *.txt file
+
+# def validate(**creds) -> bool:
+#     """
+#     Zwraca False w przypadku, gdy haslo nie spelnia wymagan biezpieczenstwa
+
+#     Args: 
+#         creds[0] (str): Login
+#         creds[1] (str): Password
+#     """
+
+#     if len(creds["password"]) < 4 or len(creds["password"]) > 8: return False
+#     if len(set("abcdefghijklmnopqrstuvwxyz") & set(creds["password"])) == 0: return False
+#     if len(set("abcdefghijklmnopqrstuvwxyz".capitalize()) & set(creds["password"])) == 0: return False
+#     if len(set("0123456789") & set(creds["password"])) == 0: return False
+
+#     f = open("temp_validation_res.txt", "wt+")
+#     f.write("VALIDATED:\n")
+#     for a, v in creds.items():
+#         f.write(f"{a}: {v}\n")
+#     f.close()
+
+
+#     return True
+
+# print(validate(login = "login", password = "123"))
+# print(validate(login = "login", password = "abcde"))
+# print(validate(login = "login", password =  "ABCDeq12"))
+
+
 
 ################ Task 2
 ## Write a function which will find all such numbers which are divisible by 7 but
@@ -267,6 +310,25 @@ print(funckcja1(1,1,3,3, a = 2, b = 2))
 # # print(my_list)
 # 
 
+import pickle
+def checknum(*xy) -> None:
+    """
+    Funkcja sprawdza czy liczby z przedzialu od xy[0] do xy[1] sa podzielne przez 7 i nie sa iloczynem z 5 i wypisuje te liczby na ekran
+
+    Args:
+        xy[0] (int): Pierwsza liczba z przedzialu
+        xy[1] (int): Druga liczba z przedzialu
+    """
+    try:
+        for i in range(xy[0], xy[1]):
+            if i % 7 == 0 and i % 5 != 0:
+                print(f"{i}, ") # TODO dopracowac
+                p = open("temp_checknum.pkl", "wt")
+                p.write(f"{i}, ")
+    except TypeError as e:
+        print("Blad:", e)
+
+checknum(1,999)
 ################ Task 3
 ## Create function with multiple arguments (x1,x2,...,xn) that accepts a sequence of 
 ## comma-separated numbers from console and returns:
