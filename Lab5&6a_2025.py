@@ -322,9 +322,9 @@ def checknum(*xy) -> None:
     try:
         for i in range(xy[0], xy[1]):
             if i % 7 == 0 and i % 5 != 0:
-                print(f"{i}, ") # TODO dopracowac
+                print(",".join(i)) # TODO dopracowac
                 p = open("temp_checknum.pkl", "wt")
-                p.write(f"{i}, ")
+                p.write(",".join(i))
     except TypeError as e:
         print("Blad:", e)
 
@@ -342,6 +342,20 @@ checknum(1,999)
 ## Name of input parameters: 
 ## You should to document your code by using python docstrings (google)
 ############### 
+def powerSelf(*args):
+    """
+    Podnosi kazda liczbe wejsciowa do potegi samej siebie i zwraca liste wynikow.
+
+    Args:
+        *args (int): dowolna liczba liczb calkowitych
+
+    Returns:
+        list: Lista gdzie kazdy element xn^xn
+    """
+    if len(args) > 100:
+        raise ValueError("Blad: za duzo elementow")
+    return [x**x for x in args]
+
 
 ################ Task 4
 ## Create function with multiple arguments (x1,x2,...,xn) that accepts a sequence of 
@@ -358,6 +372,13 @@ checknum(1,999)
 ## You should to document your code by using python docstrings (google)
 ## Wykonaj na Lab6:  Don't forget to handle exceptions (obsłudze wyjątków)
 ###############
+
+# def lazypowerself(*args):
+#     if (__name__ == "__main__"): // didnt understond requirements 
+#         try:
+#             return powerSelf(*args)
+#         except ValueError:
+#             return powerSelf(args[:100])
 
 ########################## Task 5 ########################
 ## The first step, 
