@@ -387,11 +387,26 @@ from itertools import compress, dropwhile, filterfalse
 ## a każdy kolejny element ciągu jest sumą dwóch poprzednich. Wypisz n-ty element tego ciągu
 ## Użytkownik deklaruje ilość elementów (n).
 ## Specyfikacja: użyj accumulate() lub reduce() do wygenerowania ciągu Fibonacciego
-# def fib(n):
-#     for i in list(accumulate(range(n), lambda x, y: x + y)):
-#         print(i)
+from functools import reduce
+    
+def fib(n):
+    seq = []
 
-# fib(10) # TODO dorob
+    if n == 0: 
+        return seq
+    if n == 1:
+        return seq.append[1]
+    
+    def fib_iter(x, y):
+        return seq.append(x+y)
+
+    for i in range(n):
+        reduce(fib_iter, range(i))
+    
+    for i in seq:
+        yield i
+
+print(fib(10))
 
 
 # from functools import reduce
