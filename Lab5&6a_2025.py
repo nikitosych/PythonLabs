@@ -310,25 +310,25 @@ Dodatkowe linki do filmów, które ułatwią Ci zrozumienie materiału z laborat
 # # print(my_list)
 # 
 
-import pickle
-def checknum(*xy) -> None:
-    """
-    Funkcja sprawdza czy liczby z przedzialu od xy[0] do xy[1] sa podzielne przez 7 i nie sa iloczynem z 5 i wypisuje te liczby na ekran
+# import pickle
+# def checknum(*xy) -> None:
+#     """
+#     Funkcja sprawdza czy liczby z przedzialu od xy[0] do xy[1] sa podzielne przez 7 i nie sa iloczynem z 5 i wypisuje te liczby na ekran
 
-    Args:
-        xy[0] (int): Pierwsza liczba z przedzialu
-        xy[1] (int): Druga liczba z przedzialu
-    """
-    try:
-        for i in range(xy[0], xy[1]):
-            if i % 7 == 0 and i % 5 != 0:
-                print(",".join(i)) # TODO dopracowac
-                p = open("temp_checknum.pkl", "wt")
-                p.write(",".join(i))
-    except TypeError as e:
-        print("Blad:", e)
+#     Args:
+#         xy[0] (int): Pierwsza liczba z przedzialu
+#         xy[1] (int): Druga liczba z przedzialu
+#     """
+#     try:
+#         for i in range(xy[0], xy[1]):
+#             if i % 7 == 0 and i % 5 != 0:
+#                 print(",".join(i)) # TODO dopracowac
+#                 p = open("temp_checknum.pkl", "wt")
+#                 p.write(",".join(i))
+#     except TypeError as e:
+#         print("Blad:", e)
 
-checknum(1,999)
+# checknum(1,999)
 ################ Task 3
 ## Create function with multiple arguments (x1,x2,...,xn) that accepts a sequence of 
 ## comma-separated numbers from console and returns:
@@ -342,19 +342,19 @@ checknum(1,999)
 ## Name of input parameters: 
 ## You should to document your code by using python docstrings (google)
 ############### 
-def powerSelf(*args):
-    """
-    Podnosi kazda liczbe wejsciowa do potegi samej siebie i zwraca liste wynikow.
+# def powerSelf(*args):
+#     """
+#     Podnosi kazda liczbe wejsciowa do potegi samej siebie i zwraca liste wynikow.
 
-    Args:
-        *args (int): dowolna liczba liczb calkowitych
+#     Args:
+#         *args (int): dowolna liczba liczb calkowitych
 
-    Returns:
-        list: Lista gdzie kazdy element xn^xn
-    """
-    if len(args) > 100:
-        raise ValueError("Blad: za duzo elementow")
-    return [x**x for x in args]
+#     Returns:
+#         list: Lista gdzie kazdy element xn^xn
+#     """
+#     if len(args) > 100:
+#         raise ValueError("Blad: za duzo elementow")
+#     return [x**x for x in args]
 
 
 ################ Task 4
@@ -396,8 +396,32 @@ def powerSelf(*args):
 ## c) if the filename contains 'EF.txt', then the function copy this file to 
 ## 'DocumentLab5copy' directory
 
+from os import listdir, path
+from shutil import copy2
 
+def new_manip(old):
+    def inner ():
+        zerofiles = 0
+        for file in listdir(path.join(path.curdir, "folder")):
+            if "0" in file:
+                zerofiles += 1;
+                print(len(str(open(path.join(path.curdir, "folder", file), "r"))))
+            if "EF.txt" in file:
+                copy2(path.join(path.curdir, "folder", file), path.join(path.curdir, "DocumentLab5copy"))
 
+        old()
 
+    return inner
+
+@new_manip
+def manip():
+    for file in listdir(path.join(path.curdir, "folder")):
+        if not path.isdir(file):
+            print(file)
+        if "ABC" in file:
+            count = 0
+            print(len([w for w in str(open(path.join(path.curdir, "folder", file), "r").read()).split() if len(w) > 3]))
+
+manip()
 
 
