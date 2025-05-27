@@ -205,7 +205,7 @@ q: long long int
 # print(unpack('hhl', var))
 
 ## Wariant z zapisem do pliku + pack()
-f1 = open('plik2.dat','wb') # litera b oznacza zapis danych binarnych
+# f1 = open('plik2.dat','wb') # litera b oznacza zapis danych binarnych
 # number2 = pack('h',9876)
 # f1.write(number2)
 # f1.close()
@@ -230,6 +230,15 @@ globals,locals - opcjonalne  x = 10
 ## użytkownika (nazwa ścieżki do katalogu to argument wejściowy funkcji)
 ## oraz będzie wyświetlała zawartość wskazanego przez użytkownika katalogu.
 
+def zmienKatalog(nowa):
+    try:
+        os.chdir(nowa)  # zmiana katalogu
+        print(f'Nowy katalog: {os.getcwd()}')
+        print('Zawartosc katalogu:')
+        print(os.listdir('.'))  # wyświetlenie zawartości katalogu
+    except FileNotFoundError:
+        print(f'Katalog {nowa} nie istnieje.')
+
 ########################## Zadanie 2 #########################
 ## Korzystając z utworzonej funkcji napisz funkcję która będzie zmieniała bieżący katalog
 ## dyskowy na inny wskazany przez użytkownika oraz będzie wyświetlała zawartość wskazanego przez
@@ -238,6 +247,19 @@ globals,locals - opcjonalne  x = 10
 ## program działa tylko wówczas gdy użytkownik odpowie "yes" na pytanie:
 ## "Czy mam zmienić katalog?", zastosuj pętle while True(zmuś użytkownika :) do wpisania "yes")
 
+def zmienKatalogZPotwierdzeniem():
+    while True:
+        odpowiedz = input("Czy mam zmienić katalog? (yes/no): ").strip().lower()
+        if odpowiedz == 'yes':
+            nowy = input("Podaj ścieżkę do nowego katalogu: ")
+            zmienKatalog(nowy)
+            break
+        elif odpowiedz == 'no':
+            print("Ok.")
+            break
+        else:
+            print("yes/no")
+
 ########################## Zadanie 3 #######################
 ## W swoim folderze roboczym (w którym masz plik programu) utworz folder o nazwie Dokument,
 ## do w/w folderu przekopiuj lub utwórz 3 dowolne pliki z rozszerzeniem *.doc np. (Lab1.doc, Lab2.doc, Lab3.doc)
@@ -245,6 +267,14 @@ globals,locals - opcjonalne  x = 10
 ## a) korzystając z instrukcji Pythona wyświetl wszystkie pliki znajdujące się folderze roboczym
 ## b) korzystając z metod Pythona i (pętli lub funkcji filter) wyświetl tylko pliki z rozszerzeniem *.doc znajdujące się folderze roboczym
 
+def wyswietlPlikiDoc():
+    print("Wszystkie pliki")
+    for plik in os.listdir('.'):
+        print(plik)
+    print("\nPliki z rozszerzeniem .doc:")
+    docs = filter(lambda x: x.endswith('.doc'), os.listdir('.'))
+    for plik in docs:
+        print(plik)
 
 ########################## Zadanie 4 #######################
 ## Korzystając wyłącznie z metod Pythona, utworz w swoim folderze 2 katalogi:
@@ -252,17 +282,161 @@ globals,locals - opcjonalne  x = 10
 ## pliki odpowiednio tekstowe i graficzne, a następnie wyświetl zawartość poszczególnych
 ## folderów podaj rozmiar każdego pliku
 
+def utworzKatalogiISprawdz():
+    foldery = ["StudentDoc", "StudentObrazy"]
+    zdjecia = ["zd1.png", "zd2.png", "zd3.png"]
+    teksty = ["t1.txt", "t2.txt"]
+
+    for f in foldery:
+        if f not in os.listdir("."):
+            os.mkdir(os.path.join(os.getcwd(), f))
+        
+    for z in zdjecia:
+        if z not in os.listdir(os.path.join(os.getcwd(), foldery[1])):
+            open(os.path.join(os.path.join(os.getcwd(), foldery[1]), z), "w").close()
+            print(f"Utworzono zdjecie {z}")
+
+    for t in teksty:
+        if t not in os.listdir(os.path.join(os.getcwd(), foldery[0])):
+            open(os.path.join(os.path.join(os.getcwd(), foldery[0]), t), "w").close()
+            print(f"Utworzono plik {t}")
+
+    for f in foldery:
+        print(f"\nBiezaca zawartosc {f}:")
+        for p in os.listdir(f):
+            print(p)
+
 ########################## Zadanie 5 #######################
 ## Korzystając wyłącznie z metod Pythona, utworz w swoim folderze katalog,
 ## a następnie zmień nazwę katalogu na inną, dowolną.
 
+def utworzIZmienNazwe(nowaNazwa):
+    temp = os.path.join(os.getcwd(), "temp")
+    new = os.path.join(os.getcwd(), nowaNazwa)
+    try:
+        os.mkdir(temp)
+    except FileExistsError:
+        print(f"Katalog {temp} juz istnieje. Usun go.")
+        return
+
+    try:
+        os.rename(temp, new)
+    except FileExistsError:
+        print(f"Katalog {new} juz istnieje. Usun folder \"temp\" recznie")
+        return
+
 ########################## Zadanie 6 ########################
 # # Utwórz trzy listy, zapisz, usuń a następnie odczytaj z pliku listy, użyj pickle
+
+# ########## Szybki zapis i odczyt danch - picle
+'''
+moduł picle służy do utrwalania, zapisywania i odczytywania dowolnych obiektów Pythona.
+Tego typu obiekty są nazywane trwałymi (ang.persistent) a plik je przechowujący
+pamięcią trwałą (persistent storage). Zakończenie programu nie powoduje bowiem ich zniknięcia.
+'''
+# import pickle
+### Przykład 11
+## zapis danych do pliku
+# filename = 'lista_zakupow.data'
+# products = ['jabłka', 'ziemniaki', 'pomidory']
+# f1 = open(filename, 'wb')
+# pickle.dump(products, f1)
+# f1.close()
+
+
+## usunięcie zmiennej z pamięci i ponowne wczytanie danych
+# del products
+# # odzyskanie zmiennej
+# f2 = open(filename, 'rb')
+#
+# products = pickle.load(f2)
+# for rzecz in products:
+#     print(rzecz)
+
+### Przykład 12  - zapisywanie większej liczby obiektów
+# products1 = 'jabłka'
+# products2 = 'ziemniaki'
+#
+# f3 = open('myfile.pickle', 'wb')
+# pickle.dump((products1,products2), f3)  # zapisujemy obiekty do krotki
+# f3.close()
+## Uwaga!: bez wywwołania metody .close() dane zostaną zapisane automatycznie najpóźniej
+## w momencie zakończenia programu
+
+# del products1, products2
+## odzyskanie zmiennej
+# f4 = open('myfile.pickle', 'rb')
+# products = pickle.load(f4)  # przypisujemy wczytane obiekty do zmiennej
+# print(products[0])
+# print(products[1])
+
+def picklesaveandread():
+    l1 = ["jablko", "sufit", "slonce"]
+    l2 = ["mama", "tata", "brat"]
+    l3 = ["Jan", "Joanna", "Iwan"]
+
+    fname = "listy.pkl"
+
+    f = open(fname, "wb")
+
+    pickle.dump((l1, l2, l3), f);
+
+    f.close()
+    del f
+
+    f = open(fname, "rb")
+    listy_data = pickle.load(f)
+
+    for ld in listy_data:
+        print(ld)
 
 ########################## Zadanie 7 ########################
 ## Zapisz do pliku liczbę 123456789, spakuj, rozpakuj dane
 ## Sprawdź w dokumentacji pakietu struct typ danej
 ## https://docs.python.org/3/library/struct.html
+
+### Przykład 12  - funkcje pack(), unpack() w zapisie danych do pliku
+'''
+Jeśli chcemy zapisać dane inne niż tekst do pliku, możemy posłużyć się funkcją pakowania danych (pack)
+z wbudowanego modułu struct. Zamienia ona tekst na dane binarne (w takiej postaci jak przechowywane są w
+pamięci komputera). Generalnie, struct służy do obsługi danych binarnych przechowywanych w plikach,
+bazie danych lub z połączeń sieciowych itp.
+'''
+# from struct import *
+'''
+Dodatkowe informacje o funkcji pack(), pierwszy argument pack()
+zawiera kolejne typy danach które mają być pakowane tj.
+?: boolean
+h: short int
+l: long int
+i: int
+f: float
+q: long long int
+'''
+# var = pack('hhl', 50, 100, 150)  # Zwróć uwagę że kolejne dane są zapisywane do krotki
+# print(var)
+# print(unpack('hhl', var))
+
+## Wariant z zapisem do pliku + pack()
+# f1 = open('plik2.dat','wb') # litera b oznacza zapis danych binarnych
+# number2 = pack('h',9876)
+# f1.write(number2)
+# f1.close()
+
+## Odczyt danych z pliku
+# f2 = open("plik2.dat", "rb")   # litera b oznacza odczyt danych binarnych
+# print(unpack('h',f2.read()))
+# f2.close()
+
+def packandunpack(data: int):
+    arc = open("data.dat", "wb")
+    packed = pack("i", data)
+    arc.write(packed)
+    arc.close()
+
+    arc = open("data.dat", "rb")
+    print(unpack("i", arc.read()))
+    arc.close()
 
 ########################## Zadanie 9 #########################
 ## Utwórz i zapisz do folderu 5 dowolnych plików tekstowych z dowolnym tekstem
@@ -275,7 +449,27 @@ globals,locals - opcjonalne  x = 10
 ## b) dla plików zakończonych ciągiem znaków 'ABC' wyznacz liczbę wyrazów złożonych z conajmnie 3 liter.
 ## Utwórz dodatkowową funkcję która wykorzystując poprzednią funkcję sprawdzi:
 ## a) ile plików zawiera w identyfikatorze ID liczbę 0
-## b) dla wszystkich plików które w nazwie nie mają liczby 0
-##    wyznaczy liczbę słów
+## b) dla wszystkich plików które w nazwie nie mają liczby 0 wyznaczy liczbę słów
 ## c) dla plików zakończonych ciągiem znaków 'ABC' wyznacz liczbę wyrazów złożonych z conajmnie 3 liter.
+
+def manipfiles():
+    idwithzero = 0 # c
+
+    for f in os.listdir(os.path.join(".", "folder")):
+        fp = os.path.join(".", "folder", f) # a
+        print(fp)
+
+        if f.replace(".txt", "").endswith("ABC"): # b
+            cont = open(fp, "r").read()
+            wyrazy = [w for w in cont.split() if len(w) >= 3]
+            print(f"dla plików zakończonych ciągiem znaków 'ABC' wyznacz liczbę wyrazów złożonych z conajmnie 3 liter: {len(wyrazy)}")
+
+        if "ID" in f and "0" in f: # c
+            ++idwithzero
+        else: # d
+            cont = open(fp, "r").read()
+            print(f"dla wszystkich plików które w nazwie nie mają liczby 0 wyznaczy liczbę słów: {len(cont.split())}")
+        
+
+manipfiles()
 
